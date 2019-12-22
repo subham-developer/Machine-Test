@@ -24,3 +24,18 @@
   <link rel="stylesheet" href="{{asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- for select2  -->
+  <link rel="stylesheet" href="{{asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
+
+  <link href="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/css/select2.min.css" rel="stylesheet"/>
+
+  <style>
+  .select2-selection__rendered {
+    line-height: 17px !important;
+  }
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+</style>
+

@@ -48,5 +48,7 @@
 <script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+
 </body>
 </html>
