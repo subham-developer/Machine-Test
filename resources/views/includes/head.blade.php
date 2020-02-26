@@ -29,6 +29,9 @@
 
   <link href="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/css/select2.min.css" rel="stylesheet"/>
 
+  <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+
+
   <style>
   .select2-selection__rendered {
     line-height: 17px !important;
@@ -36,6 +39,19 @@
 .hidden {
     display: none !important;
     visibility: hidden !important;
+}
+.leftdiv1000 {
+left: 1000px;
+}
+.container {
+  min-height: 500px; 
+
+}
+.width30 {
+  width:30%;
+}
+.fa-trash .fas{
+  cursor: pointer;
 }
 </style>
 

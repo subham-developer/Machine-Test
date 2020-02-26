@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBusinessCategoryMasterTable extends Migration
+class CreateMstServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateBusinessCategoryMasterTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_category_master', function (Blueprint $table) {
+        Schema::create('mst_services', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name',400);
+            $table->string('ser_description',400);
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateBusinessCategoryMasterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_category_master');
+        Schema::dropIfExists('mst_services');
     }
 }

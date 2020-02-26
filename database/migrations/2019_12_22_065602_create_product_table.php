@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBusinessPaymentTable extends Migration
+class CreateProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateBusinessPaymentTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_payment_details', function (Blueprint $table) {
+        Schema::create('product', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('business_details_id');
-            $table->string('payment_mode');
-            $table->string('service_offered');
+            $table->unsignedInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('mst_category')->onDelete('cascade');
+            $table->string('name',400);
+            $table->decimal('price',20, 2)->nullable();
+             $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateBusinessPaymentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_payment_details');
+        Schema::dropIfExists('product');
     }
 }

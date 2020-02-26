@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBusinessYouTubeLinkTable extends Migration
+class CreatePaymentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateBusinessYouTubeLinkTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_you_tube_link', function (Blueprint $table) {
+        Schema::create('mst_payment', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('business_details_id');
-            $table->string('link',900);
+            $table->string('name',400);
+            $table->string('pay_description',400);
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateBusinessYouTubeLinkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_you_tube_link');
+        Schema::dropIfExists('mst_payment');
     }
 }

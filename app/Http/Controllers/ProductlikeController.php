@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Productlike;
 use Illuminate\Http\Request;
 
-class BusinessController extends Controller
+class ProductlikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,7 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $data = array();
-     return view('business.business', $data);
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class BusinessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Productlike  $productlike
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Productlike $productlike)
     {
         //
     }
@@ -52,10 +52,10 @@ class BusinessController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Productlike  $productlike
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Productlike $productlike)
     {
         //
     }
@@ -64,21 +64,22 @@ class BusinessController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Productlike  $productlike
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Productlike $productlike)
     {
-        //
+       $input = $request->all();
+       return Productlike::upsert($input);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Productlike  $productlike
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Productlike $productlike)
     {
         //
     }
