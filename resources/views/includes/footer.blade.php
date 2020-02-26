@@ -48,5 +48,109 @@
 <script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script>
+
+ $("body").on("click",".deletecategory",function(){
+  $('.delete_id').val(this.id);
+  $('.action_delete_id').val('delete_categrory');
+
+});
+$("body").on("click",".deletepayment",function(){
+  $('.delete_id').val(this.id);
+  $('.action_delete_id').val('delete_payment');
+
+});
+$("body").on("click",".deleteservices",function(){
+  $('.delete_id').val(this.id);
+  $('.action_delete_id').val('delete_services');
+
+});
+
+  $("body").on("click", ".deleteproduct",function(){
+  
+  $('.delete_id').val(this.id);
+});
+ 
+  $('body').on('click', '.popup_delete', function() {
+  var delete_id = $('.delete_id').val();
+  var action_delete_id = $('.action_delete_id').val();
+  var _token = $('._Token').val();
+  if(action_delete_id == 'delete_categrory'){
+    var urlData = '/deleteCategrory';
+}else if(action_delete_id == 'delete_payment'){
+  var urlData = '/deletePayment';
+}else if(action_delete_id == 'delete_services'){
+  var urlData = '/deleteServices';
+}else{
+  var urlData = '/deleteProduct'
+}
+  var request = $.ajax({
+  url: urlData,
+  type: "POST",
+  data: {id : delete_id,_token : _token},
+  dataType: "json",
+  success: function(result){
+     if(result ==1){
+      $('.pop_up_msg').html('<font color="green">deleted successfully</font>');
+     }else{
+      $('.pop_up_msg').html('<font color="red">something went wrong</font>');
+     }
+     setTimeout(function(){ window.location.reload(); }, 3000);
+    }});
+});
+
+ $('body').on('click', '.like_product', function() {
+  var data_attr = $(this).attr("data-attr");
+  var id = $(this).attr("id");
+  var _token = $('._Token').val();
+  var request = $.ajax({
+  url: "/likeProduct",
+  type: "POST",
+  data: {id : id,_token : _token,data_attr:data_attr},
+  dataType: "json",
+  success: function(result){
+     if(result ==1){
+      if(data_attr == 2){
+          $('.like_product_hide_'+id).removeClass('hidden');
+           $('.like_product_display_'+id).addClass('hidden');
+           $('.count_vlaue_class_'+id).html(parseInt($('.count_vlaue_class_'+id).text())-1);
+        }else{
+         $('.count_vlaue_class_'+id).html(parseInt($('.count_vlaue_class_'+id).text())+1);
+          $('.like_product_display_'+id).removeClass('hidden');
+           $('.like_product_hide_'+id).addClass('hidden');
+        }
+     }
+    
+    }});
+});
+
+</script>
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          
+        </div>
+        <div class="modal-body">
+          <span class="pop_up_msg"></span>
+          <p>Are you sure you want to delete???</p>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" class="delete_id" value="">
+          <input type="hidden" class="action_delete_id" value="">
+          <button type="button" class="btn btn-danger popup_delete">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </body>
 </html>
